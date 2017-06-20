@@ -24,7 +24,7 @@ class OpenWeather extends Component {
             <div className="OpenWeather">
                 <img className="OpenWeather-logo" src="https://superrepo.org/static/images/icons/original/weather.openweathermap.png.pagespeed.ce.vEoqOU5NCa.png" alt="OpenWeather logo" />
                 <form onSubmit={this.handleSubmit}>
-                    <div className="bro">
+                    <div>
                         <input 
                             type="text"
                             value={this.state.cityName}

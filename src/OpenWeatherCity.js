@@ -18,11 +18,11 @@ class OpenWeatherCity extends Component {
     constructor(props) {
         super(props)
 
-        this.fetchUserData(this.props)
+        this.fetchCityData(this.props)
     }
 
-    fetchUserData = (props) => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=<your API key>&q=${props.match.params.cityName}`)
+    fetchCityData = (props) => {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=36a95216ffb536181eeb22fce631a2db&q=${props.match.params.cityName}`)
             .then(response => response.json())
             .then(city => this.setState({ city }))
     }
@@ -30,22 +30,31 @@ class OpenWeatherCity extends Component {
     componentWillReceiveProps(nextProps) {
         const locationChanged = nextProps.location !== this.props.location
         if (locationChanged) {
-            this.fetchUserData(nextProps)
+            this.fetchCityData(nextProps)
         }
     }
 
     render() {
-        const { city } =this.state
+        try {
+            const { city } =this.state
 
-        return (
-            <div className="openweather-city">
-                <h2>{city.name}</h2>
-                <h3>Temperature: {city.main.temp} kelvin</h3>
-                <h3>Pressure: {city.main.pressure} hPa</h3>
-                <h3>Humidity: {city.main.humidity}%</h3>
-                <h3>Wind Speed: {city.wind.speed} meter/sec</h3>
-            </div>
-        )
+            return (
+                <div className="openweather-city">
+                    <h2>{city.name}</h2>
+                    <h3>Temperature: {city.main.temp} kelvin</h3>
+                    <h3>Pressure: {city.main.pressure} hPa</h3>
+                    <h3>Humidity: {city.main.humidity}%</h3>
+                    <h3>Wind Speed: {city.wind.speed} meter/sec</h3>
+                </div>
+            )
+        }
+        catch(error){
+            return (
+                <div className="openweather-city">
+                    <h2>Invalid Input</h2>
+                </div>
+            )
+        }
     }
 }
 
