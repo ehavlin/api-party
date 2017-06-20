@@ -42,7 +42,7 @@ class OpenWeatherCity extends Component {
                 <h2>{city.name}</h2>
                 <h3>Temperature: {city.main.temp} kelvin</h3>
                 <h3>Pressure: {city.main.pressure} hPa</h3>
-                <h3>humidity: {city.main.humidity} %</h3>
+                <h3>Humidity: {city.main.humidity}%</h3>
                 <h3>Wind Speed: {city.wind.speed} meter/sec</h3>
             </div>
         )
