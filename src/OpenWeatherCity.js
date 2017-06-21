@@ -22,7 +22,7 @@ class OpenWeatherCity extends Component {
     }
 
     fetchCityData = (props) => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=36a95216ffb536181eeb22fce631a2db&q=${props.match.params.cityName}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=<your API key>&q=${props.match.params.cityName}`)
             .then(response => response.json())
             .then(city => this.setState({ city }))
     }
